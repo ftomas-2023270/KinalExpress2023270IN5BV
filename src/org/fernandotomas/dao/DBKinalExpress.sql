@@ -41,6 +41,37 @@ create table CargoEmpleado(
     descripcionCargo varchar(45),
     primary key PK_CargoEmpleado(codigoCargoEmpleado));
     
+create table EmailProveedor(
+    codigoEmailProveedor int not null,
+    emailProveedor varchar(50)not null,
+    descripcion varchar(100) not null,
+    Proveedores_codigoProveedores int not null,
+    primary key PK_EmailProveedor(codigoEmailProveedor),
+    foreign key PK_Proveedores_EmailProveedores(Proveedores_codigoProveedores) references Proveedores(codigoProveedor));
+    
+create table TelefonoProveedor(
+	codigoTelefonoProveedor int not null,
+    numeroPrincipal varchar(15) not null,
+    numeroSecundario varchar(15) not null,
+    observaciones varchar(45) not null,
+    Proveedores_codigoProveedores int not null,
+    primary key PK_TelegonoProveedor(codigoTelefonoProveedor),
+    foreign key FK_Proveedores_TelefonoProveedor(Proveedores_codigoProveedores)references  Proveedores(codigoProveedor));
+
+create table Productos(
+	codigoProducto varchar(15),
+        descripcionProducto varchar(45),
+	precioUnitario decimal(10,2),
+	precioDocena decimal(10,2),
+	precioMayor decimal(10,2),
+	imagenProducto varchar(45),
+	existencia int,
+    codigoTipoProducto int,
+    codigoProveedor int,
+    primary key PK_codigoProducto (codigoProducto),
+    constraint FK_Productos_TipoProducto foreign key Productos(codigoTipoProducto) references TipoProducto(codigoTipoProducto) on delete cascade,
+    constraint FK_Productos_Proveedores foreign key Productos(codigoProveedor) references Proveedores(codigoProveedor) on delete cascade
+);
     
 -- ------------------------------Procedimientos Almacenados-------------------------------------------------
 -- ------------------------------Clientes-------------------------------------------------------------------
