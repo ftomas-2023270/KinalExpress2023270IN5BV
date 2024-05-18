@@ -23,7 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
-import org.fernandotomas.db.Conexion;
+import org.fernandotomas.dao.Conexion;
 import org.fernandotomas.System.Principal;
 import org.fernandotomas.bean.Compras;
 
@@ -180,19 +180,9 @@ public class MenuComprasController implements Initializable {
                 btnAgregar.setDisable(false);
                 btnEliminar.setDisable(false);
                 btnEditar.setDisable(false);
-                imgEliminar.setImage(new Image("/org/fernandotomas/images/Cancelar.png"));
+                imgEditar.setImage(new Image("/org/fernandotomas/images/Cancelar.png"));
+                imgReporte.setImage(new Image(("/org/fernandotomas/images/Registros.png")));
                 tipoDeOperaciones = operaciones.NINGUNO;
-                break;
-            case NINGUNO:
-                desactivarControles();
-                limpiarControles();
-                btnEditar.setText("Editar");
-                btnReportes.setText("Reportes");
-                btnAgregar.setDisable(true);
-                btnEliminar.setDisable(true);
-                imgAgregar.setImage(new Image("/org/fernandotomas/images/ActualizarUsuario.png"));
-                imgEliminar.setImage(new Image("/org/fernandotomas/images/Registros.png"));
-                tipoDeOperaciones = operaciones.ACTUALIZAR;
                 break;
         }
     }

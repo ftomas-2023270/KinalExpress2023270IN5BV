@@ -14,6 +14,7 @@ import org.fernandotomas.controllers.MenuCargoEmpController;
 import org.fernandotomas.controllers.MenuClientesController;
 import org.fernandotomas.controllers.MenuComprasController;
 import org.fernandotomas.controllers.MenuPrincipalController;
+import org.fernandotomas.controllers.MenuProductosController;
 import org.fernandotomas.controllers.ProgramadorController;
 import org.fernandotomas.controllers.MenuProveedoresController;
 import org.fernandotomas.controllers.MenuTipoProductosController;
@@ -106,6 +107,14 @@ public class Principal extends Application{
             try{
                 MenuComprasController menuComprasView = (MenuComprasController)cambiarEscena("MenuComprasView.fxml", 1036, 583);
                 menuComprasView.setEscenarioPrincipal(this);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        public void menuProductosView(){
+            try{
+                MenuProductosController menuProductosView = (MenuProductosController)cambiarEscena("MenuProductosView.fxml", 1036, 583);
+                menuProductosView.setEscenarioPrincipal(this);
             }catch(Exception e){
                 e.printStackTrace();
             }
