@@ -101,7 +101,7 @@ public class MenuProductosController implements Initializable{
     public TipoProducto buscarTipoProducto (int codigoTipoProducto ){
         TipoProducto resultado = null;
         try{
-         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarTipoProducto(?)}");
+         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_BuscarTipoProducto(?)}");
          procedimiento.setInt(1, codigoTipoProducto);
          ResultSet registro = procedimiento.executeQuery();
          while (registro.next()){
@@ -122,7 +122,7 @@ public class MenuProductosController implements Initializable{
     public ObservableList<Productos> getProductos(){
     ArrayList<Productos> lista = new ArrayList<Productos>();
     try{
-        PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_mostrarProductos()}");
+        PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarProductos()}");
         ResultSet resultado = procedimiento.executeQuery();
         while(resultado.next()){
             lista.add(new Productos (resultado.getString("codigoProducto"),
@@ -146,7 +146,7 @@ public class MenuProductosController implements Initializable{
     public ObservableList<Proveedores> getProveedores() {
         ArrayList<Proveedores> listaPro = new ArrayList<>();
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_mostrarProveedor()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarProveedores()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 listaPro.add(new Proveedores(resultado.getInt("codigoProveedor"),
@@ -167,7 +167,7 @@ public class MenuProductosController implements Initializable{
      public ObservableList<TipoProducto> getTipoP() {
         ArrayList<TipoProducto> lista = new ArrayList<>();
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_mostrarTipoProducto()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarTipoProducto()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new TipoProducto(resultado.getInt("CodigoTipoProducto"),
