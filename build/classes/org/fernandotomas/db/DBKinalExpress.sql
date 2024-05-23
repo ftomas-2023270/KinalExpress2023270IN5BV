@@ -40,7 +40,7 @@ create table Compras(
 create table CargoEmpleado(
     codigoCargoEmpleado int,
     nombreCargo varchar(45),
-    descripcionCargo varchar(45),
+    descripcionCargo varchar(100),
     primary key PK_CargoEmpleado(codigoCargoEmpleado)
 );
     
@@ -299,7 +299,7 @@ call sp_ListarProveedores();
 -- ------------------------------Agregar CargoEmpleados------------------------------------------------------------------
 
 delimiter $$
-	create procedure sp_AgregarCargoEmp(in codigoCargoEmpleado int ,in nombreCargo varchar(45),in descripcionCargo varchar(45) ) 
+	create procedure sp_AgregarCargoEmp(in codigoCargoEmpleado int ,in nombreCargo varchar(45),in descripcionCargo varchar(100) ) 
 		begin
 			Insert into cargoEmpleado(codigoCargoEmpleado,nombreCargo,descripcionCargo)
             values(codigoCargoEmpleado,nombreCargo,descripcionCargo);
@@ -346,7 +346,7 @@ delimiter ;
 
 --  -------------------------Editar CargoEmpleados-----------------------------------------------
 delimiter $$
-create procedure sp_EditarCargoEmp(in _codigoCargoEmpleado int ,in _nombreCargo varchar(45),in _descripcionCargo varchar(45)) 
+create procedure sp_EditarCargoEmp(in _codigoCargoEmpleado int ,in _nombreCargo varchar(45),in _descripcionCargo varchar(100)) 
 		begin
 			update CargoEmpleado 
 			set nombreCargo=_nombreCargo,
@@ -481,12 +481,12 @@ CALL sp_EditarCompras(123456, '2024-05-10', 'Compra de materiales de construcci√
 
 delimiter $$
 	create procedure sp_AgregarProductos(in codigoProducto varchar(15),in descripcionProducto varchar(45),in precioUnitario decimal(10,2),in precioDocena decimal(10,2),
-in precioMayor decimal(10,2),in imagenProducto varchar(45),in existencia int,in codigoTipoProducto int,in codigoProveedor int)  
+in precioMayor decimal(10,2),in existencia int,in codigoTipoProducto int,in codigoProveedor int)  
 		begin
 			Insert into Productos(codigoProducto , descripcionProducto ,precioUnitario , precioDocena ,
-            precioMayor , imagenProducto , existencia , codigoTipoProducto , codigoProveedor) 
+            precioMayor , existencia , codigoTipoProducto , codigoProveedor) 
             values ( codigoProducto , descripcionProducto ,precioUnitario , precioDocena ,
-            precioMayor , imagenProducto , existencia , codigoTipoProducto , codigoProveedor);
+            precioMayor , existencia , codigoTipoProducto , codigoProveedor);
 	End$$
 delimiter ; 
 
@@ -499,7 +499,6 @@ delimiter $$
                 precioUnitario, 
                 precioDocena, 
                 precioMayor, 
-                imagenProducto, 
                 existencia, 
                 codigoTipoProducto, 
                 codigoProveedor 
@@ -514,7 +513,6 @@ delimiter $$
                 precioUnitario, 
                 precioDocena, 
                 precioMayor, 
-                imagenProducto, 
                 existencia, 
                 codigoTipoProducto, 
                 codigoProveedor 
@@ -536,14 +534,13 @@ delimiter ;
 --  -------------------------Editar Productos-----------------------------------------------
 delimiter $$
 create procedure sp_EditarProductos(in _codigoProducto varchar(15),in _descripcionProducto varchar(45),in _precioUnitario decimal(10,2),in _precioDocena decimal(10,2),
-in _precioMayor decimal(10,2),in _imagenProducto varchar(45),in _existencia int,in _codigoTipoProducto int,in _codigoProveedor int)  
+in _precioMayor decimal(10,2),in _existencia int,in _codigoTipoProducto int,in _codigoProveedor int)  
 		begin
 			update Productos 
 			set descripcionProducto=_descripcionProducto, 
                 precioUnitario=_precioUnitario, 
                 precioDocena=_precioDocena, 
-                precioMayor=_precioMayor, 
-                imagenProducto=_imagenProducto, 
+                precioMayor=_precioMayor,
                 existencia=_existencia, 
                 codigoTipoProducto=_codigoTipoProducto, 
                 codigoProveedor = _codigoProveedor
@@ -864,70 +861,6 @@ create procedure sp_EditarTelefonoProveedor(in _codigoTelefonoProveedor int , in
 			where codigoTelefonoProveedor = _codigoTelefonoProveedor;
 	End$$
 delimiter ;
-
-
--- -----------------------------TelefonoProveedor-------------------------------------------
--- ------------------------------Agregar TelefonoProveedor------------------------------------------------------------------
-
-delimiter $$
-	create procedure sp_AgregarTelefonoProveedor(in codigoTelefonoProveedor int , in  numeroPrincipal varchar(15),in numeroSecundario varchar(15) ,
-   in observaciones varchar(45) , in Proveedores_codigoProveedores int)
-		begin
-			Insert into TelefonoProveedor( codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, Proveedores_codigoProveedores )
-			values( codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, Proveedores_codigoProveedores );
-	End$$
-delimiter ;
-
---  -------------------------Listar TelefonoProveedor-----------------------------------------------
-delimiter $$
-	create procedure sp_ListarTelefonoProveedor()
-		begin
-				select codigoTelefonoProveedor, 
-                numeroPrincipal, 
-                numeroSecundario, 
-                observaciones, 
-                Proveedores_codigoProveedores
-				from TelefonoProveedor;
-		end $$
-delimiter ;
-
---  -------------------------Buscar TelefonoProveedor-----------------------------------------------
-delimiter $$
-	create procedure sp_BuscarTelefonoProveedor(in id int)
-		begin
-			select numeroPrincipal, 
-                numeroSecundario, 
-                observaciones, 
-                Proveedores_codigoProveedores
-				from TelefonoProveedor
-				where id = codigoTelefonoProveedor;
-		end $$
-delimiter ;
-
---  -------------------------Eliminar TelefonoProveedor-----------------------------------------------
-delimiter $$
-	create procedure sp_EliminarTelefonoProveedor(in id int)
-		begin
-			delete from TelefonoProveedor 
-			where id = codigoTelefonoProveedor;
-		end $$
-delimiter ;
-
---  -------------------------Editar TelefonoProveedor-----------------------------------------------
-delimiter $$
-create procedure sp_EditarTelefonoProveedor(in _codigoTelefonoProveedor int , in  _numeroPrincipal varchar(15),in _numeroSecundario varchar(15) ,
-   in _observaciones varchar(45) , in _Proveedores_codigoProveedores int)
-		begin
-			update TelefonoProveedor 
-			set  
-            numeroPrincipal=_numeroPrincipal, 
-			numeroSecundario=_numeroSecundario, 
-			observaciones=_observaciones, 
-			Proveedores_codigoProveedores=_Proveedores_codigoProveedores
-			where codigoTelefonoProveedor = _codigoTelefonoProveedor;
-	End$$
-delimiter ;
-
 
 -- -----------------------------Factura -------------------------------------------
 -- ------------------------------Agregar Factura------------------------------------------------------------------

@@ -481,12 +481,12 @@ CALL sp_EditarCompras(123456, '2024-05-10', 'Compra de materiales de construcci√
 
 delimiter $$
 	create procedure sp_AgregarProductos(in codigoProducto varchar(15),in descripcionProducto varchar(45),in precioUnitario decimal(10,2),in precioDocena decimal(10,2),
-in precioMayor decimal(10,2),in imagenProducto varchar(45),in existencia int,in codigoTipoProducto int,in codigoProveedor int)  
+in precioMayor decimal(10,2),in existencia int,in codigoTipoProducto int,in codigoProveedor int)  
 		begin
 			Insert into Productos(codigoProducto , descripcionProducto ,precioUnitario , precioDocena ,
-            precioMayor , imagenProducto , existencia , codigoTipoProducto , codigoProveedor) 
+            precioMayor , existencia , codigoTipoProducto , codigoProveedor) 
             values ( codigoProducto , descripcionProducto ,precioUnitario , precioDocena ,
-            precioMayor , imagenProducto , existencia , codigoTipoProducto , codigoProveedor);
+            precioMayor , existencia , codigoTipoProducto , codigoProveedor);
 	End$$
 delimiter ; 
 
@@ -499,7 +499,6 @@ delimiter $$
                 precioUnitario, 
                 precioDocena, 
                 precioMayor, 
-                imagenProducto, 
                 existencia, 
                 codigoTipoProducto, 
                 codigoProveedor 
@@ -514,7 +513,6 @@ delimiter $$
                 precioUnitario, 
                 precioDocena, 
                 precioMayor, 
-                imagenProducto, 
                 existencia, 
                 codigoTipoProducto, 
                 codigoProveedor 
@@ -536,14 +534,13 @@ delimiter ;
 --  -------------------------Editar Productos-----------------------------------------------
 delimiter $$
 create procedure sp_EditarProductos(in _codigoProducto varchar(15),in _descripcionProducto varchar(45),in _precioUnitario decimal(10,2),in _precioDocena decimal(10,2),
-in _precioMayor decimal(10,2),in _imagenProducto varchar(45),in _existencia int,in _codigoTipoProducto int,in _codigoProveedor int)  
+in _precioMayor decimal(10,2),in _existencia int,in _codigoTipoProducto int,in _codigoProveedor int)  
 		begin
 			update Productos 
 			set descripcionProducto=_descripcionProducto, 
                 precioUnitario=_precioUnitario, 
                 precioDocena=_precioDocena, 
-                precioMayor=_precioMayor, 
-                imagenProducto=_imagenProducto, 
+                precioMayor=_precioMayor,
                 existencia=_existencia, 
                 codigoTipoProducto=_codigoTipoProducto, 
                 codigoProveedor = _codigoProveedor

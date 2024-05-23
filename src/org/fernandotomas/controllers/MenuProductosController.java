@@ -96,6 +96,7 @@ public class MenuProductosController implements Initializable{
        txtPrecioM.setText(String.valueOf(((Productos)tblProductos.getSelectionModel().getSelectedItem()).getPrecioMayor()));
        txtExistencia.setText(String.valueOf(((Productos)tblProductos.getSelectionModel().getSelectedItem()).getExistencia()));
        cmbCodigoTipoP.getSelectionModel().select(buscarTipoProducto(((Productos)tblProductos.getSelectionModel().getSelectedItem()).getCodigoTipoProducto()));
+       cmbCodProv.getSelectionModel().select(buscarTipoProducto(((Proveedores)tblProductos.getSelectionModel().getSelectedItem()).getCodigoProveedor()));
     }
     
     public TipoProducto buscarTipoProducto (int codigoTipoProducto ){
@@ -156,7 +157,7 @@ public class MenuProductosController implements Initializable{
                         resultado.getString("direccionProveedor"),
                         resultado.getString("razonSocial"),
                         resultado.getString("contactoPrincipal"),
-                        resultado.getString("paginaWeb")
+                        resultado.getString("paginaWebProveedor")
                 ));
             }
         } catch (Exception e) {
@@ -224,15 +225,15 @@ public class MenuProductosController implements Initializable{
          registro.setExistencia(Integer.parseInt(txtExistencia.getText()));
          try {
         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall
-        ("{CALL sp_agregarProducto(?, ?, ?, ?, ?, ?, ?, ?)}");
+        ("{CALL sp_AgregarProductos(?, ?, ?, ?, ?, ?, ?, ?)}");
         procedimiento.setString(1, registro.getCodigoProducto());
         procedimiento.setString(2, registro.getDescripcionProducto());
         procedimiento.setDouble(3, registro.getPrecioUnitario());
         procedimiento.setDouble(4, registro.getPrecioDocena());
         procedimiento.setDouble(5, registro.getPrecioMayor());
         procedimiento.setInt(6, registro.getExistencia());
-        procedimiento.setInt(7, registro.getCodigoProveedor());
-        procedimiento.setInt(8, registro.getCodigoTipoProducto());
+        procedimiento.setInt(8, registro.getCodigoProveedor());
+        procedimiento.setInt(7, registro.getCodigoTipoProducto());
         procedimiento.execute();
         
         listaProductos.add(registro);
@@ -257,10 +258,10 @@ public class MenuProductosController implements Initializable{
             default :
                 if(tblProductos.getSelectionModel().getSelectedItem() != null){
                     int respuesta = JOptionPane.showConfirmDialog(null,"Confirmar si elimina el Registro",
-                            "Eliminar Clientes",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                            "Eliminar Producto",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if(respuesta == JOptionPane.YES_NO_OPTION){
                         try{
-                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EliminarClientes(?)}");
+                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EliminarProducto(?)}");
                             procedimiento.setInt(1, ((Productos)tblProductos.getSelectionModel().getSelectedItem()).getCodigoProveedor());
                             procedimiento.execute();
                             listaProductos.remove(tblProductos.getSelectionModel().getSelectedItem());
@@ -330,7 +331,7 @@ public class MenuProductosController implements Initializable{
          registro.setExistencia(Integer.parseInt(txtExistencia.getText()));
          try {
         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall
-        ("{CALL sp_editarProducto(?, ?, ?, ?, ?, ?, ?, ?)}");
+        ("{CALL sp_EditarProducto(?, ?, ?, ?, ?, ?, ?, ?)}");
         procedimiento.setString(1, registro.getCodigoProducto());
         procedimiento.setString(2, registro.getDescripcionProducto());
         procedimiento.setDouble(3, registro.getPrecioUnitario());
@@ -356,7 +357,7 @@ public class MenuProductosController implements Initializable{
         txtPrecioM.setEditable(false);
         txtExistencia.setEditable(false);
         cmbCodigoTipoP.setDisable(true);
-        cmbCodigoTipoP.setDisable(true);
+        cmbCodProv.setDisable(true);
     
     }
       public void activarControles(){
@@ -367,7 +368,7 @@ public class MenuProductosController implements Initializable{
         txtPrecioM.setEditable(true);
         txtExistencia.setEditable(true);
         cmbCodigoTipoP.setDisable(false);
-        cmbCodigoTipoP.setDisable(false);
+        cmbCodProv.setDisable(false);
     
     }
       public void limpiarControles(){
@@ -379,7 +380,7 @@ public class MenuProductosController implements Initializable{
         txtExistencia.clear();
         tblProductos.getSelectionModel().getSelectedItem();
         cmbCodigoTipoP.getSelectionModel().getSelectedItem();
-        cmbCodigoTipoP.getSelectionModel().getSelectedItem();
+        cmbCodProv.getSelectionModel().getSelectedItem();
     
     }
           public Principal getEscenarioPrincipal() {

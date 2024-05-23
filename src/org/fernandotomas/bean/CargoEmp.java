@@ -33,7 +33,7 @@ public class CargoEmp {
     public String getNombreCargo() {
         return nombreCargo;
     }
-
+    
     public void setNombreCargo(String nombreCargo) {
         this.nombreCargo = nombreCargo;
     }
@@ -46,5 +46,8 @@ public class CargoEmp {
         this.descripcionCargo = descripcionCargo;
     }
     
-    
+    @Override
+    public String toString() {
+        return getCodigoCargoEmpleado() +  " -  " + getNombreCargo() ;
+    }
 }

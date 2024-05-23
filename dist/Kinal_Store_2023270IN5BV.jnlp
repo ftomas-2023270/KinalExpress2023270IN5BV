@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Kinal_Store_2023270IN5BV.jar" size="766662" download="eager" />
+    <jar href="Kinal_Store_2023270IN5BV.jar" size="768287" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.12.jar" size="2020431" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="org.fernandotomas.System.Principal"  name="Kinal_Store_2023270IN5BV" />

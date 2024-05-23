@@ -92,7 +92,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="tblClientes" layoutX="222.0" layoutY="309.0" onMouseClicked="#seleccionarElementos" prefHeight="247.0" prefWidth="790.0" stylesheets="@../rcs/KinalExpressCSS.css">
+      <TableView fx:id="tblProductos" layoutX="222.0" layoutY="309.0" onMouseClicked="#seleccionarElementos" prefHeight="247.0" prefWidth="790.0" stylesheets="@../rcs/KinalExpressCSS.css">
          <columns>
             <TableColumn fx:id="colCodProd" minWidth="98.75" prefWidth="87.0" text="codigoProducto" />
             <TableColumn fx:id="colDescProd" minWidth="98.75" prefWidth="87.0" text="descripcionProducto" />

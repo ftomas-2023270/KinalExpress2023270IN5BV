@@ -131,38 +131,6 @@ public class MenuCargoEmpController implements Initializable {
         }
     }
     
-    public void eliminar(){
-        switch (tipoDeOperaciones){
-            case ACTUALIZAR:
-                desactivarControles();
-                limpiarControles();
-                btnAgregar.setText("Agregar");
-                btnEliminar.setText("Eliminar");
-                btnEditar.setDisable(false);
-                btnReportes.setDisable(false);
-                imgAgregar.setImage(new Image("/org/fernandotomas/images/AgregarUsuario.png"));
-                imgEliminar.setImage(new Image("/org/fernandotomas/images/EliminarUsuario.png"));
-                tipoDeOperaciones = operaciones.NINGUNO;
-                break;
-            default :
-                if(tblCargoEmp.getSelectionModel().getSelectedItem() != null){
-                    int respuesta = JOptionPane.showConfirmDialog(null,"Confirmar si elimina el Registro",
-                            "Eliminar Clientes",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if(respuesta == JOptionPane.YES_NO_OPTION){
-                        try{
-                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EliminarCargoEmp(?)}");
-                            procedimiento.setInt(1, ((CargoEmp)tblCargoEmp.getSelectionModel().getSelectedItem()).getCodigoCargoEmpleado());
-                            procedimiento.execute();
-                            listaCargoEmp.remove(tblCargoEmp.getSelectionModel().getSelectedItem());
-                        }catch(Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                }else
-                    JOptionPane.showMessageDialog(null, "Seleccione un elemento.");
-                break;
-        } 
-    }
     
     public void reporte (){
         switch(tipoDeOperaciones){
