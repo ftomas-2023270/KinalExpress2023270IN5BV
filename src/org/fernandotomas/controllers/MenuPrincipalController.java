@@ -56,6 +56,10 @@ public class MenuPrincipalController implements Initializable {
             escenarioPrincipal.menuComprasView();
         }else if(event.getSource()== btnMenuProductos){
             escenarioPrincipal.menuProductosView();
+        }else if(event.getSource()== btnMenuProductos){
+            escenarioPrincipal.menuProductosView();
+        }else if(event.getSource()== btnMenuProductos){
+            escenarioPrincipal.menuProductosView();
         }
     }
 }

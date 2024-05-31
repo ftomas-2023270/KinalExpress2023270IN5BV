@@ -83,7 +83,7 @@ public class MenuEmailProveedoresController implements Initializable {
     public Proveedores buscarProveedor (int codigoProveedor ){
         Proveedores resultado = null;
         try{
-         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_BuscarProveedor(?)}");
+         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EmailProveedor(?)}");
          procedimiento.setInt(1, codigoProveedor);
          ResultSet registro = procedimiento.executeQuery();
          while (registro.next()){
@@ -150,20 +150,19 @@ public class MenuEmailProveedoresController implements Initializable {
     public void guardar(){
         EmailProveedores registro = new EmailProveedores();
         registro.setCodigoEmailProveedor(Integer.parseInt(txtCodigoEP.getText()));
-        registro.setEmailProveedor(txtNumeroPrincipal.getText());
-        registro.getDescripcion(txtNumeroSecundario.getText());
-        registro.setCodigoProveedores(((Proveedores)cmbCodigoProv.getSelectionModel().getSelectedItem()
+        registro.setEmailProveedor(txtEmailP.getText());
+        registro.setDescripcion(txtDescripcion.getText());
+        registro.setProveedores_codigoProveedores(((Proveedores)cmbCodigoProv.getSelectionModel().getSelectedItem()
                  ).getCodigoProveedor());
 
         try{
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarTelefonoProveedor(?, ?, ?, ?, ?)}");          
-            procedimiento.setInt(1, registro.getCodigoTelefonoProveedor());
-            procedimiento.setString(2, registro.getTelefonoPrincipal());
-            procedimiento.setString(3, registro.getTelefonoSecundario());
-            procedimiento.setString(4, registro.getObservaciones());
-            procedimiento.setInt(5, registro.getCodigoProveedores());
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarEmailProveedor( ?, ?, ?, ?)}");          
+            procedimiento.setInt(1, registro.getCodigoEmailProveedor());
+            procedimiento.setString(2, registro.getEmailProveedor());
+            procedimiento.setString(3, registro.getDescripcion());
+            procedimiento.setInt(4, registro.getProveedores_codigoProveedores());
             procedimiento.execute();
-            EmailProveedores.add(registro);
+            listaEmailProveedores.add(registro);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -198,7 +197,7 @@ public class MenuEmailProveedoresController implements Initializable {
                     imgEditar.setImage(new Image("/org/fernandotomas/images/ActualizarUsuario.png"));
                     imgReporte.setImage(new Image("/org/fernandotomas/images/Cancelar.png"));
                     activarControles();
-                    txtCodigoTP.setEditable(false);
+                    txtCodigoEP.setEditable(false);
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 }else
                     JOptionPane.showMessageDialog(null, "Debe de seleccionar algun elemento");
@@ -221,44 +220,39 @@ public class MenuEmailProveedoresController implements Initializable {
     
     public void actualizar(){
         EmailProveedores registro = new EmailProveedores();
-        registro.setTelefonoPrincipal(txtNumeroPrincipal.getText());
-        registro.setTelefonoSecundario(txtNumeroSecundario.getText());
-        registro.setObservaciones(txtObservaciones.getText());
-        registro.setCodigoProveedores(((Proveedores)cmbCodigoProv.getSelectionModel().getSelectedItem()
+        registro.setEmailProveedor(txtEmailP.getText());
+        registro.setDescripcion(txtDescripcion.getText());
+        registro.setProveedores_codigoProveedores(((Proveedores)cmbCodigoProv.getSelectionModel().getSelectedItem()
                  ).getCodigoProveedor());
         try{
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarTelefonoProveedor(?, ?, ?, ?, ?)}");        
-            procedimiento.setInt(1, registro.getCodigoTelefonoProveedor());
-            procedimiento.setString(2, registro.getTelefonoPrincipal());
-            procedimiento.setString(3, registro.getTelefonoSecundario());
-            procedimiento.setString(4, registro.getObservaciones());
-            procedimiento.setInt(5, registro.getCodigoProveedores());
+           PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarEmailProveedor( ?, ?, ?, ?)}");          
+            procedimiento.setInt(1, registro.getCodigoEmailProveedor());
+            procedimiento.setString(2, registro.getEmailProveedor());
+            procedimiento.setString(3, registro.getDescripcion());
+            procedimiento.setInt(4, registro.getProveedores_codigoProveedores());
             procedimiento.execute();
-            listaTelefonoProveedor.add(registro);
+            listaEmailProveedores.add(registro);
         }catch(Exception e){
             e.printStackTrace();
         }
     }
             
         public void desactivarControles(){
-        txtCodigoTP.setEditable(false);
-        txtNumeroPrincipal.setEditable(false);
-        txtNumeroSecundario.setEditable(false);
-        txtObservaciones.setEditable(false);
+        txtCodigoEP.setEditable(false);
+        txtEmailP.setEditable(false);
+        txtDescripcion.setEditable(false);
         cmbCodigoProv.setDisable(true);
     }
       public void activarControles(){
-        txtCodigoTP.setEditable(true);
-        txtNumeroPrincipal.setEditable(true);
-        txtNumeroSecundario.setEditable(true);
-        txtObservaciones.setEditable(true);
+        txtCodigoEP.setEditable(true);
+        txtEmailP.setEditable(true);
+        txtDescripcion.setEditable(true);
         cmbCodigoProv.setDisable(false);
     }
       public void limpiarControles(){
-        txtCodigoTP.clear();
-        txtNumeroPrincipal.clear();
-        txtNumeroSecundario.clear();
-        txtObservaciones.clear();
+        txtCodigoEP.clear();
+        txtEmailP.clear();
+        txtDescripcion.clear();
         cmbCodigoProv.getSelectionModel().getSelectedItem();
     }
 
