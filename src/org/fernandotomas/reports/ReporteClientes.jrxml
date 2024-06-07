@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteClientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5015da1-1e10-4290-9b7f-679dc692f72b">
+	<property name="ireport.zoom" value="0.9090909090909097"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="645"/>
+	<queryString>
+		<![CDATA[call sp_ListarClientes
+
+]]>
+	</queryString>
+	<field name="codigoCliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NITCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccionCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefonoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="802" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="555" height="802" uuid="f91a49c7-3c9f-409b-96b0-e971688a3a9e"/>
+				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\Repositorio 2023270 IN5BV\\KinalExpress2023270IN5BV\\src\\org\\fernandotomas\\images\\ReportesClientes.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="162" y="41" width="100" height="20" uuid="5eeb3845-8028-4f58-8ecf-29e1a9dbc91f"/>
+				<text><![CDATA[nombreCliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="41" width="100" height="20" uuid="36f5a387-351b-4741-8438-5233d2510028"/>
+				<text><![CDATA[NITCliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="41" width="100" height="20" uuid="66ff8f48-8ffb-46de-b0ee-d19b3ab6c697"/>
+				<text><![CDATA[correoCliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="41" width="100" height="20" uuid="36a3c451-f8bb-4b2e-b6d7-0d2d25df099c"/>
+				<text><![CDATA[apellidoCliente]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="162" y="15" width="100" height="20" uuid="8cb8b667-758b-46b5-a728-b1bf9fc9cb22"/>
+				<textFieldExpression><![CDATA[$F{nombreCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="15" width="100" height="20" uuid="4c9bd5db-2d15-448d-a132-73a4820eede7"/>
+				<textFieldExpression><![CDATA[$F{NITCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="15" width="100" height="20" uuid="9ae09d28-6f46-49c0-aede-854d3fee1d4f"/>
+				<textFieldExpression><![CDATA[$F{correoCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="15" width="100" height="20" uuid="63e5409f-0b13-4dce-95ac-7b8511385ba8"/>
+				<textFieldExpression><![CDATA[$F{apellidoCliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
