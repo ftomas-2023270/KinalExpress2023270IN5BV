@@ -173,10 +173,11 @@ public class MenuFacturasController implements Initializable {
 
         try{
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarEmailProveedor( ?, ?, ?, ?)}");          
-            procedimiento.setInt(1, registro.getCodigoEmailProveedor());
-            procedimiento.setString(2, registro.getEmailProveedor());
-            procedimiento.setString(3, registro.getDescripcion());
-            procedimiento.setInt(4, registro.getProveedores_codigoProveedores());
+            procedimiento.setInt(1, registro.getNumeroFactura());
+            procedimiento.setString(2, registro.getEstado());
+            procedimiento.setString(3, registro.getFechaFactura());
+            procedimiento.setInt(4, registro.getCodigoEmpleado());
+            procedimiento.setInt(4, registro.getCodigoCliente());
             procedimiento.execute();
             listaFactura.add(registro);
         }catch(Exception e){
@@ -236,16 +237,23 @@ public class MenuFacturasController implements Initializable {
     
     public void actualizar(){
         Factura registro = new Factura();
-        registro.setEmailProveedor(txtEmailP.getText());
-        registro.setDescripcion(txtDescripcion.getText());
-        registro.setProveedores_codigoProveedores(((Proveedores)cmbCodigoProv.getSelectionModel().getSelectedItem()
-                 ).getCodigoProveedor());
+        registro.setNumeroFactura(Integer.parseInt(txtNumeroF.getText()));
+        registro.setEstado(txtEstado.getText());
+        registro.setTotalFactura(Double.parseDouble(txtTotalF.getText()));
+        registro.setFechaFactura(txtTotalF.getText());
+        registro.setTotalFactura(Integer.parseInt(txtTotalF.getText()));
+        registro.setTotalFactura(Integer.parseInt(txtTotalF.getText()));
+        registro.setCodigoCliente(((Clientes)cmbCodigoC.getSelectionModel().getSelectedItem()
+                 ).getCodigoCliente());
+        registro.setCodigoEmpleado(((Empleados)cmbCodigoE.getSelectionModel().getSelectedItem()
+                 ).getCodigoEmpleado());
         try{
            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarEmailProveedor( ?, ?, ?, ?)}");          
-            procedimiento.setInt(1, registro.getCodigoEmailProveedor());
-            procedimiento.setString(2, registro.getEmailProveedor());
-            procedimiento.setString(3, registro.getDescripcion());
-            procedimiento.setInt(4, registro.getProveedores_codigoProveedores());
+            procedimiento.setInt(1, registro.getNumeroFactura());
+            procedimiento.setString(2, registro.getEstado());
+            procedimiento.setString(3, registro.getFechaFactura());
+            procedimiento.setInt(4, registro.getCodigoEmpleado());
+            procedimiento.setInt(4, registro.getCodigoCliente());
             procedimiento.execute();
             listaFactura.add(registro);
         }catch(Exception e){
@@ -254,22 +262,28 @@ public class MenuFacturasController implements Initializable {
     }
             
         public void desactivarControles(){
-        txtCodigoEP.setEditable(false);
-        txtEmailP.setEditable(false);
-        txtDescripcion.setEditable(false);
-        cmbCodigoProv.setDisable(true);
+        txtNumeroF.setEditable(false);
+        txtEstado.setEditable(false);
+        txtTotalF.setEditable(false);
+        txtFechaF.setEditable(false);
+        cmbCodigoC.setDisable(true);
+        cmbCodigoE.setDisable(true);
     }
       public void activarControles(){
-        txtCodigoEP.setEditable(true);
-        txtEmailP.setEditable(true);
-        txtDescripcion.setEditable(true);
-        cmbCodigoProv.setDisable(false);
+        txtNumeroF.setEditable(true);
+        txtEstado.setEditable(true);
+        txtTotalF.setEditable(true);
+        txtFechaF.setEditable(true);
+        cmbCodigoC.setDisable(false);
+        cmbCodigoE.setDisable(false);
     }
       public void limpiarControles(){
-        txtCodigoEP.clear();
-        txtEmailP.clear();
-        txtDescripcion.clear();
-        cmbCodigoProv.getSelectionModel().getSelectedItem();
+        txtNumeroF.clear();
+        txtEstado.clear();
+        txtTotalF.clear();
+        txtFechaF.clear();
+        cmbCodigoC.getSelectionModel().getSelectedItem();
+        cmbCodigoE.getSelectionModel().getSelectedItem();
     }
 
     public Principal getEscenarioPrincipal() {

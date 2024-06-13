@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +28,7 @@ import javax.swing.JOptionPane;
 import org.fernandotomas.dao.Conexion;
 import org.fernandotomas.System.Principal;
 import org.fernandotomas.bean.Clientes;
+import org.fernandotomas.reports.GenerarReportes;
 
 /**
  * FXML Controller class
@@ -195,6 +198,7 @@ public class MenuClientesController implements Initializable {
         switch(tipoDeOperaciones){
             case NINGUNO:
                 imprimirReporte();
+                tipoDeOperaciones = operaciones.ACTUALIZAR;
                 break;
             case ACTUALIZAR:
                 desactivarControles();
@@ -214,7 +218,7 @@ public class MenuClientesController implements Initializable {
     public void imprimirReporte(){
         Map parametro = new HashMap();
         parametro.put("codigoCliente", null );
-        GenerarReportes.mostrarReportes("ReporteClientes.jasper", "Reportes de Clientes", parametros)
+        GenerarReportes.mostrarReportes("ReporteClientes.jasper", "Reportes de Clientes", parametros);
     }
     
     public void editar(){

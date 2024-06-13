@@ -7,7 +7,14 @@
 package org.fernandotomas.reports;
 
 
+import java.io.InputStream;
 import java.util.Map;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import org.fernandotomas.dao.Conexion;
 /**
  *
  * @author informatica
@@ -16,7 +23,7 @@ public class GenerarReportes {
     public static void MostrarReportes(String nombreReporte, String titulo, Map parametro){
         InputStream reporte = GenerarReportes.class.getResourceAsStream(nombreReporte);
             try {
-                JasperReport reporteMaestro = (JasperReport)JRLoader.loadObject(reporte)
+                JasperReport reporteMaestro = (JasperReport)JRLoader.loadObject(reporte);
                 JasperPrint reporteImpreso = JasperFillManager.fillReport(reporteMaestro,parametro, Conexion.getInstance().getConexion());
                 JasperViewer visor= new JasperViewer(reporteImpreso,false );
                 visor.setTitle(titulo);
