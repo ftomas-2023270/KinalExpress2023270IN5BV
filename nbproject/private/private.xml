@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio%20FTomas-2023270/KinalExpress2023270IN5BV/src/org/fernandotomas/bean/Factura.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio%20FTomas-2023270/KinalExpress2023270IN5BV/src/org/fernandotomas/controllers/MenuFacturasController.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio%20FTomas-2023270/KinalExpress2023270IN5BV/src/org/fernandotomas/bean/Empleados.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio%20FTomas-2023270/KinalExpress2023270IN5BV/src/org/fernandotomas/controllers/MenuProductosController.java</file>
+            <file>file:/C:/Users/alfre/OneDrive/Escritorio/Proyectos%20Casita/KinalExpress2023270IN5BV/src/org/fernandotomas/controllers/MenuEmailProveedoresController.java</file>
+            <file>file:/C:/Users/alfre/OneDrive/Escritorio/Proyectos%20Casita/KinalExpress2023270IN5BV/src/org/fernandotomas/controllers/MenuTelefonoProveedoresController.java</file>
+            <file>file:/C:/Users/alfre/OneDrive/Escritorio/Proyectos%20Casita/KinalExpress2023270IN5BV/src/org/fernandotomas/controllers/MenuFacturasController.java</file>
+            <file>file:/C:/Users/alfre/OneDrive/Escritorio/Proyectos%20Casita/KinalExpress2023270IN5BV/src/org/fernandotomas/dao/Conexion.java</file>
+            <file>file:/C:/Users/alfre/OneDrive/Escritorio/Proyectos%20Casita/KinalExpress2023270IN5BV/src/org/fernandotomas/bean/CargoEmp.java</file>
         </group>
     </open-files>
 </project-private>

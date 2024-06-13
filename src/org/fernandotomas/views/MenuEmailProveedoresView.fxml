@@ -15,9 +15,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fernandotomas.controllers.MenuProductosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fernandotomas.controllers.MenuEmailProveedoresController">
    <children>
-      <GridPane layoutX="24.0" layoutY="163.0" prefHeight="292.0" prefWidth="197.0">
+      <ImageView fitHeight="583.0" fitWidth="1036.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/EmailProveedores.jpg" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="34.0" layoutY="221.0" prefHeight="292.0" prefWidth="197.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -74,7 +79,7 @@
             </Button>
          </children>
       </GridPane>
-      <Button fx:id="btnRegresar" layoutX="24.0" layoutY="469.0" mnemonicParsing="false" onAction="#regresar" prefHeight="90.0" prefWidth="98.0" stylesheets="@../rcs/KinalExpressCSS.css">
+      <Button fx:id="btnRegresar" layoutX="814.0" layoutY="29.0" mnemonicParsing="false" onAction="#regresar" prefHeight="90.0" prefWidth="98.0" stylesheets="@../rcs/KinalExpressCSS.css">
          <styleClass>
             <String fx:value="botton3" />
             <String fx:value="button2" />
