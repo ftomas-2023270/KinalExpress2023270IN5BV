@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import org.fernandotomas.controllers.MenuCargoEmpController;
 import org.fernandotomas.controllers.MenuClientesController;
 import org.fernandotomas.controllers.MenuComprasController;
+import org.fernandotomas.controllers.MenuFacturasController;
 import org.fernandotomas.controllers.MenuPrincipalController;
 import org.fernandotomas.controllers.MenuProductosController;
 import org.fernandotomas.controllers.ProgramadorController;
@@ -115,6 +116,14 @@ public class Principal extends Application{
             try{
                 MenuProductosController menuProductosView = (MenuProductosController)cambiarEscena("MenuProductosView.fxml", 1036, 583);
                 menuProductosView.setEscenarioPrincipal(this);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        public void menuFacturasView(){
+            try{
+                MenuFacturasController menuFacturasView = (MenuFacturasController)cambiarEscena("MenuFacturasView.fxml", 1036, 583);
+                menuFacturasView.setEscenarioPrincipal(this);
             }catch(Exception e){
                 e.printStackTrace();
             }

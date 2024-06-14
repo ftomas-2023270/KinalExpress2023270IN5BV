@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fernandotomas.controllers.ProgramadorController">
+   <children>
+      <ImageView fitHeight="439.0" fitWidth="759.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Programador%20(1).jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnRegresar" layoutX="646.0" layoutY="24.0" mnemonicParsing="false" onAction="#regresar" prefHeight="61.0" prefWidth="64.0">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/RegresarMenuPrincipal.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

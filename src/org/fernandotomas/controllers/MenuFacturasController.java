@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +32,7 @@ import org.fernandotomas.System.Principal;
 import org.fernandotomas.bean.Factura;
 import org.fernandotomas.bean.Empleados;
 import org.fernandotomas.bean.Clientes;
+import org.fernandotomas.reports.GenerarReportes;
 
 
 /**
@@ -93,7 +96,7 @@ public class MenuFacturasController implements Initializable {
     public Empleados buscarEmpleado (int codigoEmpleado ){
         Empleados resultado = null;
         try{
-         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EmailProveedor(?)}");
+         PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_Empleados(?)}");
          procedimiento.setInt(1, codigoEmpleado);
          ResultSet registro = procedimiento.executeQuery();
          while (registro.next()){
@@ -116,7 +119,7 @@ public class MenuFacturasController implements Initializable {
     public ObservableList <Factura> getFactura (){
         ArrayList <Factura> lista = new ArrayList();
         try{
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarEmailProveedor()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarFacturas()}");
             ResultSet resultado = procedimiento.executeQuery();
             while(resultado.next()){
                 lista.add(new Factura (resultado.getInt("codigoEmailProveedor"),
@@ -172,7 +175,7 @@ public class MenuFacturasController implements Initializable {
                  ).getCodigoEmpleado());
 
         try{
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarEmailProveedor( ?, ?, ?, ?)}");          
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarFactura( ?, ?, ?, ?)}");          
             procedimiento.setInt(1, registro.getNumeroFactura());
             procedimiento.setString(2, registro.getEstado());
             procedimiento.setString(3, registro.getFechaFactura());
@@ -201,6 +204,13 @@ public class MenuFacturasController implements Initializable {
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;
         }
+    }
+    
+    public void ImprimirReporte(){
+        Map parametros = new HashMap();
+        int factId = ((Factura)tblFactura.getSelectionModel().getSelectedItem()).getNumeroFactura();
+        parametros.put("factId", factId);
+        GenerarReportes.mostrarReportes("ReporteFacturaVespertina.jasper", "Factura de la tarde", parametros);
     }
     
     public void editar(){
@@ -248,7 +258,7 @@ public class MenuFacturasController implements Initializable {
         registro.setCodigoEmpleado(((Empleados)cmbCodigoE.getSelectionModel().getSelectedItem()
                  ).getCodigoEmpleado());
         try{
-           PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarEmailProveedor( ?, ?, ?, ?)}");          
+           PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarFactura( ?, ?, ?, ?)}");          
             procedimiento.setInt(1, registro.getNumeroFactura());
             procedimiento.setString(2, registro.getEstado());
             procedimiento.setString(3, registro.getFechaFactura());

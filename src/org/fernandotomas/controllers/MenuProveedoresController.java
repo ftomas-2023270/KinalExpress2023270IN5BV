@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +28,7 @@ import javax.swing.JOptionPane;
 import org.fernandotomas.dao.Conexion;
 import org.fernandotomas.System.Principal;
 import org.fernandotomas.bean.Proveedores;
+import org.fernandotomas.reports.GenerarReportes;
 
 /**
  * FXML Controller class
@@ -198,9 +201,18 @@ public class MenuProveedoresController implements Initializable {
         } 
     }
     
+    public void imprimirReporte(){
+        Map parametros = new HashMap();
+        parametros.put("codigoProveedores", null );
+        GenerarReportes.mostrarReportes("reportesProveedores.jasper", "Reportes de Proveedores", parametros);
+    }
      
     public void reporte (){
         switch(tipoDeOperaciones){
+            case NINGUNO:
+                imprimirReporte();
+                tipoDeOperaciones = operaciones.ACTUALIZAR;
+                break;
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();

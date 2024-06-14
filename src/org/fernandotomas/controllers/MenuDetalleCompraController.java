@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.fernandotomas.controllers;
+/*package org.fernandotomas.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +34,7 @@ import org.fernandotomas.dao.Conexion;
  *
  * @author alfre
  */
+/*
 public class MenuDetalleCompraController implements Initializable {
 
     private Principal escenarioPrincipal;
@@ -132,6 +133,7 @@ public class MenuDetalleCompraController implements Initializable {
 }
 
 */
+/*
     public ObservableList<DetalleCompra> getDetalleCompra() {
         ArrayList<DetalleCompra> lista = new ArrayList<>();
         try {
@@ -379,3 +381,4 @@ public class MenuDetalleCompraController implements Initializable {
         }
     }
 }
+*/

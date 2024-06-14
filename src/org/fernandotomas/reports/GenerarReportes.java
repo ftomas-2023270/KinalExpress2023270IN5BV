@@ -20,7 +20,7 @@ import org.fernandotomas.dao.Conexion;
  * @author informatica
  */
 public class GenerarReportes {
-    public static void MostrarReportes(String nombreReporte, String titulo, Map parametro){
+    public static void mostrarReportes(String nombreReporte, String titulo, Map parametro){
         InputStream reporte = GenerarReportes.class.getResourceAsStream(nombreReporte);
             try {
                 JasperReport reporteMaestro = (JasperReport)JRLoader.loadObject(reporte);
