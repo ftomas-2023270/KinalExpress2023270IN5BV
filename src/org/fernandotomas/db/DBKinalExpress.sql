@@ -149,8 +149,6 @@ delimiter $$
 		End$$
 delimiter ;
 
-call sp_AgregarClientes(1, '123456-7', 'Juan', 'García', 'Calle 123, Ciudad A', '123456789', 'juan.garcia@example.com');
-call sp_AgregarClientes(2, '987654-3', 'María', 'López', 'Avenida 456, Ciudad B', '987654321', 'maria.lopez@example.com');
 --  -------------------------Listar Clientes-----------------------------------------------
 delimiter $$
 	create procedure sp_ListarClientes()
@@ -166,7 +164,6 @@ delimiter $$
 		end $$
 delimiter ;
 
-call sp_ListarClientes();
 
 --  -------------------------Buscar Clientes-----------------------------------------------
 delimiter $$
@@ -184,7 +181,6 @@ delimiter $$
 		end $$
 delimiter ;
 
-call sp_BuscarClientes(2);
 
 --  -------------------------Eliminar Clientes-----------------------------------------------
 delimiter $$
@@ -212,7 +208,6 @@ create procedure sp_EditarClientes (in codCliente int ,in nCliente varchar(12),i
 	End$$
 delimiter ;
 
-call sp_EditarClientes(1,'85698-5','Eladio','Carrion','Humacao','45369858','SouceBoyz@gcode.com')
 
 -- ------------------------------Proveedores-------------------------------------------------------------------
 -- ------------------------------Agregar Proveedores------------------------------------------------------------------
@@ -225,9 +220,6 @@ delimiter $$
             values(codigoProveedor, NITProveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWebProveedor);
 		End$$
 delimiter ;
-call sp_AgregarProveedores(1001, '123456789','ProveedorCorp','S.A.','Calle Ficticia 123','ProveedorCorp S.A.', 'Juan Pérez', 'www.proveedorcorp.com');
-
-call sp_AgregarProveedores(2002, '987654321', 'Suministros XYZ', 'Ltda.', 'Avenida Principal 456', 'Suministros XYZ Ltda.', 'María García', 'www.suministrosxyz.com');
 
 --  -------------------------Listar Proveedores-----------------------------------------------
 delimiter $$
@@ -245,7 +237,6 @@ delimiter $$
 		end $$
 delimiter ;
 
-call sp_ListarClientes();
 
 --  -------------------------Buscar  Proveedores-----------------------------------------------
 delimiter $$
@@ -264,7 +255,6 @@ delimiter $$
 		end $$
 delimiter ;
 
-call sp_BuscarClientes(2);
 
 --  -------------------------Eliminar Proveedores-----------------------------------------------
 delimiter $$
@@ -275,7 +265,6 @@ delimiter $$
 		end $$
 delimiter ;
 
-call sp_EliminarProveedores(1);
 
 --  -------------------------Editar Proveedores-----------------------------------------------
 delimiter $$
@@ -294,7 +283,6 @@ create procedure sp_EditarProveedores (in codProveedor int ,in NProveedor varcha
 		End$$
 delimiter ;
 
-call sp_ListarProveedores();
 
 -- -----------------------------CargoEmpleados-------------------------------------------
 -- ------------------------------Agregar CargoEmpleados------------------------------------------------------------------
@@ -306,9 +294,6 @@ delimiter $$
             values(codigoCargoEmpleado,nombreCargo,descripcionCargo);
 		End$$
 delimiter ;
-call sp_AgregarCargoEmp(102, 'Desarrollador', 'Responsable de desarrollar aplicaciones');
-call sp_AgregarCargoEmp(101, 'Gerente', 'Responsable de gestionar equipos y proyectos');
-
 --  -------------------------Listar CargoEmpleados-----------------------------------------------
 delimiter $$
 	create procedure sp_ListarCargoEmp()
@@ -320,7 +305,6 @@ delimiter $$
 		end $$
 delimiter ;
 
-call sp_ListarCargoEmp();
 
 --  -------------------------Buscar CargoEmpleados-----------------------------------------------
 delimiter $$
@@ -333,7 +317,6 @@ delimiter $$
 		end $$
 delimiter ;
 
-call sp_BuscarCargoEmp(101);
 
 --  -------------------------Eliminar CargoEmpleados-----------------------------------------------
 delimiter $$
@@ -343,7 +326,6 @@ delimiter $$
 			where id = codigoCargoEmpleado;
 		end $$
 delimiter ;
-sp_AgregarTelefonoProveedor
 
 --  -------------------------Editar CargoEmpleados-----------------------------------------------
 delimiter $$
@@ -356,7 +338,6 @@ create procedure sp_EditarCargoEmp(in _codigoCargoEmpleado int ,in _nombreCargo 
 		End$$
 delimiter ;
 
-call sp_EditarCargoEmp(101,'Programador','Desarrollador de aplicaciones')
 -- -----------------------------TipoProducto-------------------------------------------
 -- ------------------------------Agregar TipoProducto------------------------------------------------------------------
 
@@ -421,8 +402,6 @@ delimiter $$
 	End$$
 delimiter ;
 
-call sp_AgregarCompras(123456, '2024-05-10', 'Compra de materiales', 500.00);
-call sp_AgregarCompras(789012, '2024-05-09', 'Compra de equipo', 1200.00);
 
 --  -------------------------Listar Compras-----------------------------------------------
 delimiter $$
@@ -436,7 +415,6 @@ delimiter $$
 		end $$
 delimiter ;
 
-CALL sp_ListarCompras();
 
 --  -------------------------Buscar Compras-----------------------------------------------
 delimiter $$
@@ -449,7 +427,6 @@ delimiter $$
 				where id = numeroDocumento;
 		end $$
 delimiter ;
-CALL sp_BuscarCompras(123456);
 
 
 --  -------------------------Eliminar Compras-----------------------------------------------
@@ -460,8 +437,6 @@ delimiter $$
 			where id = numeroDocumento;
 		end $$
 delimiter ;
-CALL sp_EliminarCompras(789012);
-
 
 --  -------------------------Editar Compras-----------------------------------------------
 delimiter $$
@@ -475,7 +450,6 @@ create procedure sp_EditarCompras(in _numeroDocumento int ,in _fechaDocumento da
 	End$$
 delimiter ;
 
-CALL sp_EditarCompras(123456, '2024-05-10', 'Compra de materiales de construcción', 550.00);
 
 -- -----------------------------Productos-------------------------------------------
 -- ------------------------------Agregar Productos------------------------------------------------------------------
@@ -491,7 +465,6 @@ in precioMayor decimal(10,2),in existencia int,in codigoTipoProducto int,in codi
 	End$$
 delimiter ; 
 
-call sp_AgregarProductos(1,'a',1,2,3,4,1,1001);
 --  -------------------------Listar Productos-----------------------------------------------
 delimiter $$
 	create procedure sp_ListarProductos()
@@ -508,7 +481,6 @@ delimiter $$
 		end $$
 delimiter ; 
 
-call sp_ListarProductos();
 --  -------------------------Buscar Productos-----------------------------------------------
 delimiter $$
 	create procedure sp_BuscarProductos(in id int)
@@ -558,10 +530,10 @@ Delimiter $$
 	Create procedure sp_agregarEmpleados(in codigoEmpleado int  ,in nombreEmpleado varchar(50)  ,in apellidoEmpleado varchar(50) ,
     in sueldo decimal(10,2)  ,in direccion varchar(150),in turno varchar(15) ,in cargoEmpleado_codigoCargoEmpleado int)  
 		begin
-			Insert into Productos(codigoProducto , descripcionProducto ,precioUnitario , precioDocena ,
-            precioMayor , imagenProducto , existencia , codigoTipoProducto , codigoProveedor) 
-            values ( codigoProducto , descripcionProducto ,precioUnitario , precioDocena ,
-            precioMayor , imagenProducto , existencia , codigoTipoProducto , codigoProveedor);
+			Insert into Empleados(codigoEmpleado , nombreEmpleado ,apellidoEmpleado , sueldo ,
+            direccion , turno , cargoEmpleado_codigoCargoEmpleado ) 
+            values (codigoEmpleado , nombreEmpleado ,apellidoEmpleado , sueldo ,
+            direccion , turno , cargoEmpleado_codigoCargoEmpleado ) ;
 		End$$
 Delimiter ;
 -- -------------------------------------------------- Listar empleados ----------------------------------------------------------------------
@@ -931,3 +903,127 @@ create procedure sp_EditarFactura(in _numeroFactura int,in _estado varchar(50),i
 				where numeroFactura = _numeroFactura;
 	End$$
 delimiter ;
+
+CALL sp_AgregarClientes(1, '123456789012', 'Juan', 'Pérez', 'Calle Falsa 123', '5551234567', 'juan.perez@example.com');
+CALL sp_AgregarClientes(2, '987654321098', 'Ana', 'García', 'Avenida Siempre Viva 742', '5559876543', 'ana.garcia@example.com');
+CALL sp_AgregarClientes(3, '123123123123', 'Luis', 'Martínez', 'Boulevard de los Sueños Rotos 5', '5551239876', 'luis.martinez@example.com');
+CALL sp_AgregarClientes(4, '321321321321', 'María', 'López', 'Calle del Olvido 23', '5553216548', 'maria.lopez@example.com');
+CALL sp_AgregarClientes(5, '456456456456', 'Carlos', 'Rodríguez', 'Paseo de la Reforma 100', '5554567891', 'carlos.rodriguez@example.com');
+CALL sp_AgregarClientes(6, '654654654654', 'Elena', 'Sánchez', 'Plaza de la Constitución 1', '5556543214', 'elena.sanchez@example.com');
+CALL sp_AgregarClientes(7, '789789789789', 'Pedro', 'González', 'Callejón del Beso 12', '5557894563', 'pedro.gonzalez@example.com');
+CALL sp_AgregarClientes(8, '987987987987', 'Sofía', 'Fernández', 'Camino Real 45', '5559873217', 'sofia.fernandez@example.com');
+CALL sp_AgregarClientes(9, '741741741741', 'David', 'Jiménez', 'Ruta del Sol 6', '5557418529', 'david.jimenez@example.com');
+CALL sp_AgregarClientes(10, '852852852852', 'Laura', 'Hernández', 'Vía Láctea 89', '5558529634', 'laura.hernandez@example.com');
+
+CALL sp_AgregarProveedores(1, '123456789012', 'Juan', 'Pérez', 'Calle Falsa 123', 'Proveedores S.A.', 'Juan Pérez', 'www.proveedoressa.com');
+CALL sp_AgregarProveedores(2, '987654321098', 'Ana', 'García', 'Avenida Siempre Viva 742', 'Distribuciones Ana', 'Ana García', 'www.distribucionesana.com');
+CALL sp_AgregarProveedores(3, '123123123123', 'Luis', 'Martínez', 'Boulevard de los Sueños Rotos 5', 'Martínez y Cía.', 'Luis Martínez', 'www.martinezycia.com');
+CALL sp_AgregarProveedores(4, '321321321321', 'María', 'López', 'Calle del Olvido 23', 'Suministros López', 'María López', 'www.suministroslopez.com');
+CALL sp_AgregarProveedores(5, '456456456456', 'Carlos', 'Rodríguez', 'Paseo de la Reforma 100', 'Rodríguez Proveeduría', 'Carlos Rodríguez', 'www.rodriguezproveeduria.com');
+CALL sp_AgregarProveedores(6, '654654654654', 'Elena', 'Sánchez', 'Plaza de la Constitución 1', 'Sánchez y Asociados', 'Elena Sánchez', 'www.sanchezyasociados.com');
+CALL sp_AgregarProveedores(7, '789789789789', 'Pedro', 'González', 'Callejón del Beso 12', 'González Distribuciones', 'Pedro González', 'www.gonzalezdistribuciones.com');
+CALL sp_AgregarProveedores(8, '987987987987', 'Sofía', 'Fernández', 'Camino Real 45', 'Fernández Proveedores', 'Sofía Fernández', 'www.fernandezproveedores.com');
+CALL sp_AgregarProveedores(9, '741741741741', 'David', 'Jiménez', 'Ruta del Sol 6', 'Jiménez Suministros', 'David Jiménez', 'www.jimenezsuministros.com');
+CALL sp_AgregarProveedores(10, '852852852852', 'Laura', 'Hernández', 'Vía Láctea 89', 'Hernández y Cía.', 'Laura Hernández', 'www.hernandezycia.com');
+
+CALL sp_AgregarCargoEmp(1, 'Gerente General', 'Responsable de la dirección general de la empresa.');
+CALL sp_AgregarCargoEmp(2, 'Subgerente', 'Asiste al gerente general y supervisa áreas específicas.');
+CALL sp_AgregarCargoEmp(3, 'Jefe de Ventas', 'Dirige el equipo de ventas y estrategias comerciales.');
+CALL sp_AgregarCargoEmp(4, 'Analista Financiero', 'Encargado del análisis financiero y presupuestos.');
+CALL sp_AgregarCargoEmp(5, 'Coordinador de Recursos Humanos', 'Gestión y coordinación del personal y nómina.');
+CALL sp_AgregarCargoEmp(6, 'Desarrollador de Software', 'Desarrollo y mantenimiento de sistemas de software.');
+CALL sp_AgregarCargoEmp(7, 'Ingeniero de Sistemas', 'Planificación y gestión de infraestructura de TI.');
+CALL sp_AgregarCargoEmp(8, 'Representante de Servicio al Cliente', 'Atención y soporte a los clientes de la empresa.');
+CALL sp_AgregarCargoEmp(9, 'Marketing Digital', 'Estrategias y gestión de campañas de marketing digital.');
+CALL sp_AgregarCargoEmp(10, 'Contador', 'Manejo de la contabilidad y registros financieros de la empresa.');
+
+CALL sp_AgregarTipoProducto(1, 'Electrónica');
+CALL sp_AgregarTipoProducto(2, 'Alimentos');
+CALL sp_AgregarTipoProducto(3, 'Ropa');
+CALL sp_AgregarTipoProducto(4, 'Muebles');
+CALL sp_AgregarTipoProducto(5, 'Libros');
+CALL sp_AgregarTipoProducto(6, 'Juguetes');
+CALL sp_AgregarTipoProducto(7, 'Herramientas');
+CALL sp_AgregarTipoProducto(8, 'Artículos de Oficina');
+CALL sp_AgregarTipoProducto(9, 'Cosméticos');
+CALL sp_AgregarTipoProducto(10, 'Deportes');
+
+CALL sp_AgregarCompras(1001, '2024-01-15', 'Compra de equipos de oficina', 1250.75);
+CALL sp_AgregarCompras(1002, '2024-01-20', 'Compra de materiales de construcción', 5800.50);
+CALL sp_AgregarCompras(1003, '2024-01-25', 'Compra de muebles para la sala de reuniones', 2340.90);
+CALL sp_AgregarCompras(1004, '2024-02-01', 'Compra de insumos de limpieza', 450.00);
+CALL sp_AgregarCompras(1005, '2024-02-10', 'Compra de productos electrónicos', 6750.30);
+CALL sp_AgregarCompras(1006, '2024-02-15', 'Compra de software de gestión', 3200.45);
+CALL sp_AgregarCompras(1007, '2024-02-20', 'Compra de alimentos para eventos', 1200.00);
+CALL sp_AgregarCompras(1008, '2024-03-01', 'Compra de uniformes para el personal', 1950.80);
+CALL sp_AgregarCompras(1009, '2024-03-05', 'Compra de materiales de oficina', 890.25);
+CALL sp_AgregarCompras(1010, '2024-03-10', 'Compra de equipos de telecomunicaciones', 4890.60);
+
+CALL sp_AgregarProductos('P001', 'Laptop Dell', 750.00, 9000.00, 680.00, 50, 1, 1);
+CALL sp_AgregarProductos('P002', 'Smartphone Samsung', 500.00, 6000.00, 450.00, 100, 1, 2);
+CALL sp_AgregarProductos('P003', 'Camisa Hombre', 25.00, 270.00, 22.00, 200, 3, 3);
+CALL sp_AgregarProductos('P004', 'Escritorio Oficina', 150.00, 1700.00, 130.00, 30, 4, 4);
+CALL sp_AgregarProductos('P005', 'Libro de Programación', 30.00, 350.00, 28.00, 80, 5, 5);
+CALL sp_AgregarProductos('P006', 'Juguete Educativo', 15.00, 160.00, 13.00, 150, 6, 6);
+CALL sp_AgregarProductos('P007', 'Martillo', 10.00, 110.00, 9.00, 60, 7, 7);
+CALL sp_AgregarProductos('P008', 'Papel de Oficina', 3.00, 30.00, 2.50, 500, 8, 8);
+CALL sp_AgregarProductos('P009', 'Set de Maquillaje', 20.00, 220.00, 18.00, 100, 9, 9);
+CALL sp_AgregarProductos('P010', 'Balón de Fútbol', 25.00, 270.00, 22.00, 120, 10, 10);
+
+CALL sp_AgregarEmailProveedor(1, 'contacto@proveedoressa.com', 'Correo principal de contacto', 1);
+CALL sp_AgregarEmailProveedor(2, 'ventas@distribucionesana.com', 'Correo para ventas', 2);
+CALL sp_AgregarEmailProveedor(3, 'soporte@martinezycia.com', 'Correo de soporte técnico', 3);
+CALL sp_AgregarEmailProveedor(4, 'info@suministroslopez.com', 'Correo de información general', 4);
+CALL sp_AgregarEmailProveedor(5, 'pedidos@rodriguezproveeduria.com', 'Correo para pedidos', 5);
+CALL sp_AgregarEmailProveedor(6, 'admin@sanchezyasociados.com', 'Correo administrativo', 6);
+CALL sp_AgregarEmailProveedor(7, 'servicio@gonzalezdistribuciones.com', 'Correo de servicio al cliente', 7);
+CALL sp_AgregarEmailProveedor(8, 'compras@fernandezproveedores.com', 'Correo para compras', 8);
+CALL sp_AgregarEmailProveedor(9, 'marketing@jimenezsuministros.com', 'Correo para marketing', 9);
+CALL sp_AgregarEmailProveedor(10, 'contacto@hernandezycia.com', 'Correo principal de contacto', 10);
+
+CALL sp_AgregarTelefonoProveedor(1, '555-1234567', '555-7654321', 'Teléfonos de contacto principal', 1);
+CALL sp_AgregarTelefonoProveedor(2, '555-2345678', '555-8765432', 'Teléfonos de ventas y atención al cliente', 2);
+CALL sp_AgregarTelefonoProveedor(3, '555-3456789', '555-9876543', 'Soporte técnico y administración', 3);
+CALL sp_AgregarTelefonoProveedor(4, '555-4567890', '555-0987654', 'Contacto para pedidos e información', 4);
+CALL sp_AgregarTelefonoProveedor(5, '555-5678901', '555-1098765', 'Líneas de atención al cliente', 5);
+CALL sp_AgregarTelefonoProveedor(6, '555-6789012', '555-2109876', 'Números de atención y soporte', 6);
+CALL sp_AgregarTelefonoProveedor(7, '555-7890123', '555-3210987', 'Teléfonos de servicio y atención', 7);
+CALL sp_AgregarTelefonoProveedor(8, '555-8901234', '555-4321098', 'Líneas de contacto para compras', 8);
+CALL sp_AgregarTelefonoProveedor(9, '555-9012345', '555-5432109', 'Teléfonos para marketing y ventas', 9);
+CALL sp_AgregarTelefonoProveedor(10, '555-0123456', '555-6543210', 'Contactos principales y secundarios', 10);
+
+CALL sp_agregarEmpleados(1, 'María', 'García', 2800.50, 'Avenida Central 456', 'Tarde', 2);
+CALL sp_agregarEmpleados(2, 'Carlos', 'Martínez', 3200.75, 'Calle 7 de Abril 789', 'Mañana', 3);
+CALL sp_agregarEmpleados(3, 'Ana', 'López', 2500.00, 'Avenida Principal 321', 'Noche', 1);
+CALL sp_agregarEmpleados(4, 'Pedro', 'Sánchez', 3000.00, 'Calle del Bosque 45', 'Tarde', 4);
+CALL sp_agregarEmpleados(5, 'Laura', 'Ramírez', 2700.25, 'Avenida Libertad 890', 'Mañana', 2);
+CALL sp_agregarEmpleados(6, 'Roberto', 'Gómez', 2900.80, 'Calle Rosales 67', 'Tarde', 3);
+CALL sp_agregarEmpleados(7, 'Sofía', 'Hernández', 2600.50, 'Avenida del Sol 123', 'Noche', 1);
+CALL sp_agregarEmpleados(8, 'Juan', 'Torres', 3100.00, 'Calle Central 456', 'Mañana', 4);
+CALL sp_agregarEmpleados(19, 'Marcela', 'Díaz', 2850.75, 'Avenida Primavera 789', 'Tarde', 2);
+CALL sp_agregarEmpleados(10, 'Luis', 'Martí', 2950.60, 'Calle Mayor 567', 'Noche', 3);
+
+
+CALL sp_AgregarFactura(1, 'Pagada', 1500.00, '2024-01-10', 1, 1);
+CALL sp_AgregarFactura(2, 'Pendiente', 2800.50, '2024-01-15', 2, 2);
+CALL sp_AgregarFactura(3, 'Pagada', 990.75, '2024-01-20', 3, 3);
+CALL sp_AgregarFactura(4, 'Pagada', 450.25, '2024-02-01', 4, 4);
+CALL sp_AgregarFactura(5, 'Pendiente', 3200.80, '2024-02-05', 5, 5);
+CALL sp_AgregarFactura(6, 'Pagada', 1750.30, '2024-02-10', 6, 6);
+CALL sp_AgregarFactura(7, 'Pendiente', 210.50, '2024-02-15', 7, 7);
+CALL sp_AgregarFactura(8, 'Pagada', 890.00, '2024-03-01', 8, 8);
+CALL sp_AgregarFactura(9, 'Pagada', 4200.60, '2024-03-05', 9, 9);
+CALL sp_AgregarFactura(10, 'Pendiente', 760.45, '2024-03-10', 10, 10);
+
+INSERT INTO DetalleFactura (codigoDetalleFactura, precioUnitario, cantidad, Factura_numeroFactura, Productos_codigoProducto) VALUES
+(1, 15.50, 2, 1, 'P001'),
+(2, 22.75, 1, 1, 'P002'),
+(3, 9.99, 5, 2, 'P003'),
+(4, 45.00, 3, 2, 'P004'),
+(5, 33.33, 4, 3, 'P005'),
+(6, 18.50, 6, 3, 'P006'),
+(7, 27.75, 2, 4, 'P007'),
+(8, 5.99, 10, 4, 'P008'),
+(9, 100.00, 1, 5, 'P009'),
+(10, 12.50, 8, 5, 'P010');
+

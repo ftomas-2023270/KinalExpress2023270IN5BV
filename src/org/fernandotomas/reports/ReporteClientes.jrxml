@@ -59,6 +59,13 @@
 				<reportElement x="304" y="41" width="100" height="20" uuid="36a3c451-f8bb-4b2e-b6d7-0d2d25df099c"/>
 				<text><![CDATA[apellido Cliente]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="19" y="1" width="100" height="40" uuid="1f83cc66-38e3-49ab-97d4-d1095062b72a"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Clientes']]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

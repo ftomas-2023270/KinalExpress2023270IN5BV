@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportesFactura" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5a2b66d2-8d23-4043-8da0-9a182d5493e2">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="63"/>
+	<queryString>
+		<![CDATA[select * from DetalleFactura
+join Factura on DetalleFactura.Factura_NumeroFactura = Factura.numeroFactura
+join Clientes on Factura.Clientes_codigoCliente = Clientes.codigoCliente
+join Productos on DetalleFactura.Productos_codigoProducto = Productos.codigoProducto
+where Factura.numeroFactura = 1]]>
+	</queryString>
+	<field name="codigoDetalleFactura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioUnitario" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Factura_numeroFactura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Productos_codigoProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroFactura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalFactura" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaFactura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Clientes_codigoCliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Empleados_codigoEmpleado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoCliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NITCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccionCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefonoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correoCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcionProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioDocena" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioMayor" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="imagenProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="existencia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoTipoProducto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoProveedor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="98" height="101" uuid="c7bf956f-bfce-4a6e-b2d8-45778eb6bc1b"/>
+				<imageExpression><![CDATA["C:\\Users\\alfre\\OneDrive\\Escritorio\\Proyectos Casita\\KinalExpress2023270IN5BV\\src\\org\\fernandotomas\\images\\LogoME.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="349" y="45" width="114" height="36" uuid="2560b57b-b4c8-4a60-9568-7bd66fad2518"/>
+				<textFieldExpression><![CDATA['Factura No.']]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="118" splitType="Stretch">
+			<textField>
+				<reportElement x="108" y="17" width="114" height="36" uuid="d49c3b0e-8077-4f03-9160-910ff4f627b0"/>
+				<textFieldExpression><![CDATA['Nombre y Apellido']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="75" width="114" height="36" uuid="911be2fe-a3c8-4fa3-8d25-c1c9ff6567cd"/>
+				<textFieldExpression><![CDATA['NIT']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="17" width="114" height="36" uuid="c21df0fa-9fce-4067-8b1a-5cfd1d4af14d"/>
+				<textFieldExpression><![CDATA['Direccion']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="75" width="114" height="36" uuid="9e07b62e-710c-4b57-8130-f227df99df7d"/>
+				<textFieldExpression><![CDATA['Telefono']]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="99" splitType="Stretch">
+			<textField>
+				<reportElement x="108" y="25" width="114" height="36" uuid="ff731978-8cc7-4a0a-aa6d-40e640fa1b29"/>
+				<textFieldExpression><![CDATA['Cantidad']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="25" width="114" height="36" uuid="6320d98e-c3c4-45ee-b9b9-a6908bf4afd1"/>
+				<textFieldExpression><![CDATA[Producto']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="522" y="25" width="114" height="36" uuid="8110e93c-e14d-4dae-a84d-e8687bde578c"/>
+				<textFieldExpression><![CDATA['Precio Unitario']]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="37" y="0" width="747" height="1" uuid="9c84f715-0ded-4780-bb24-62544763bb59"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="486" y="25" width="1" height="64" uuid="0c60ab50-97a4-4f47-bee2-fb9231abf3f7"/>
+			</line>
+			<line>
+				<reportElement x="280" y="25" width="1" height="64" uuid="5fd45585-4907-4717-89dc-804a5d8be9f5"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
